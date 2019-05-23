@@ -5,9 +5,8 @@ const os = require('os');
 const contents = Object.keys(icons)
   .map(
     icon => `module ${icon} = {
-  [@bs.module "@material-ui/icons/${icon}"] external reactClass : ReasonReact.reactClass = "default";
-  let make = (children) =>
-    ReasonReact.wrapJsForReason(~reactClass, ~props=Js.Obj.empty(), children);
+  [@react.component] [@bs.module "@material-ui/icons/${icon}"]
+  external make : unit => React.element = "default";
 };`,
   )
   .join(`${os.EOL}${os.EOL}`);

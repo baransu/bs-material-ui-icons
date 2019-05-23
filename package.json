@@ -5,14 +5,14 @@
   "main": "lib/js/src/MaterialUI.js",
   "scripts": {
     "precommit": "lint-staged",
-    "build": "yarn generate-bindings && bsb -make-world",
+    "build": "yarn generate-bindings && bsb -make-world && yarn format:reason",
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepublish": "yarn run clean && yarn run build",
     "generate-bindings": "node ./scripts/generate-bindings.js",
     "format:js": "prettier --write ./*.{js,json,md} ./**/*.{js,json,md}",
-    "format:reason": "refmt --in-place src/*.re",
+    "format:reason": "bsrefmt --in-place src/*.re",
     "format": "yarn format:js && yarn format:reason"
   },
   "repository": {
@@ -37,19 +37,19 @@
   "dependencies": {},
   "devDependencies": {
     "@material-ui/icons": "1.0.0-beta.43",
-    "bs-platform": "3.0.0",
+    "bs-platform": "5.0.4",
     "husky": "0.14.3",
     "lint-staged": "7.0.5",
     "material-ui": "1.0.0-beta.43",
     "prettier": "1.12.1",
-    "reason-react": "0.4.0"
+    "reason-react": "0.7.0"
   },
   "peerDependencies": {
     "@material-ui/icons": "^1.0.0-beta.43",
-    "reason-react": "^0.3.0"
+    "reason-react": "0.7.0"
   },
   "lint-staged": {
     "*.{js,json}": ["prettier --write", "git add"],
-    "src/**/*.re": ["refmt --in-place", "git add"]
+    "src/**/*.re": ["bsrefmt --in-place", "git add"]
   }
 }

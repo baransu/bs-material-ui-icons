@@ -29,10 +29,8 @@ Then add `bs-material-ui-icons` to `bs-dev-dependencies` in your `bsconfig.json`
 ## Usage
 
 ```reason
-let component = ReasonReact.statelessComponent("Example");
-
-let make = (_children) => {
-  ...component,
-  render: (_self) => <MaterialUIIcons.Delete>
+[@react.component]
+let make = () => {
+  <MaterialUIIcons.Delete />
 };
 ```
